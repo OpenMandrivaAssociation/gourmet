@@ -69,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc CHANGES MANIFEST PKG-INFO README TODO
 %{_bindir}/%name
-%{_libdir}/python*/site-packages/%name
+%{py_puresitedir}/%{name}*
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*
 %{_datadir}/%name
