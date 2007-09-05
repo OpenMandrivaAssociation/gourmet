@@ -14,10 +14,12 @@ Group:		Graphical desktop/GNOME
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	python-devel 
 BuildRequires:  python-metakit
-BuildRequires:  pygtk2.0-devel python-sqlite2 PyRTF python-imaging
+BuildRequires:  desktop-file-utils pygtk2.0-devel python-sqlite2 PyRTF python-imaging
 Requires:	gnome-python pygtk2.0-libglade
 Requires:	python-metakit python-imaging python-sqlite2 python-imaging
 BuildArch:	noarch
+Requires(post): desktop-file-utils
+Requires(postun): desktop-file-utils
 
 %description
 Gourmet allows you to collect, search and organize your recipes, and to
