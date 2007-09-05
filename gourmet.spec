@@ -1,13 +1,13 @@
 %define name	gourmet
-%define version 0.11.2
-%define release %mkrel 3
+%define version 0.13.4
+%define release %mkrel 1
 
 Name: 	 	%{name}
 Summary: 	Recipe manager for the GNOME desktop
 Version: 	%{version}
 Release: 	%{release}
 
-Source:		http://prdownloads.sourceforge.net/grecipe-manager/%{name}-%{version}.tar.bz2
+Source:		http://prdownloads.sourceforge.net/grecipe-manager/%{name}-%{version}-2.tar.bz2
 URL:		http://grecipe-manager.sourceforge.net/
 License:	GPL
 Group:		Graphical desktop/GNOME
@@ -25,10 +25,14 @@ automatically generate shopping lists from your collection.
 
 %prep
 %setup -q
+chmod -x data/recipe.dtd
+
+%build
+%{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-python setup.py install --root=$RPM_BUILD_ROOT
+%{__python} setup.py install -O1 --skip-build --root %buildroot --disable-modules-check
 
 %find_lang %name
 
@@ -42,6 +46,7 @@ EOF
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --remove-category="Other" \
+  --remove-key="Icon" \
   --add-category="GTK" \
   --add-category="Database;Office" \
   --add-category="X-MandrivaLinux-MoreApplications-Databases" \
