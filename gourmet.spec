@@ -1,6 +1,6 @@
 %define name	gourmet
 %define version 0.13.4
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: 	 	%{name}
 Summary: 	Recipe manager for the GNOME desktop
@@ -17,6 +17,7 @@ BuildRequires:  python-metakit ImageMagick
 BuildRequires:  desktop-file-utils pygtk2.0-devel python-sqlite2 PyRTF python-imaging
 Requires:	gnome-python pygtk2.0-libglade
 Requires:	python-metakit python-imaging python-sqlite2 python-imaging
+Requires:       python-reportlab
 BuildArch:	noarch
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
@@ -39,12 +40,6 @@ rm -rf $RPM_BUILD_ROOT
 %find_lang %name
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{name}" icon="%{name}.png" needs="x11" title="Gourmet" longtitle="Recipe Manager" section="More Applications/Databases"\
-xdg="true"
-EOF
-
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --remove-category="Other" \
@@ -80,7 +75,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*
 %{_datadir}/%name
-%{_menudir}/%name
 %{_liconsdir}/%name.png
 %{_iconsdir}/%name.png
 %{_miconsdir}/%name.png
