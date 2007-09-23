@@ -17,7 +17,7 @@ BuildRequires:  python-metakit ImageMagick
 BuildRequires:  desktop-file-utils pygtk2.0-devel python-sqlite2 PyRTF python-imaging
 Requires:	gnome-python pygtk2.0-libglade
 Requires:	python-metakit python-imaging python-sqlite2 python-imaging
-Requires:       python-reportlab
+Requires:	python-reportlab
 BuildArch:	noarch
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
