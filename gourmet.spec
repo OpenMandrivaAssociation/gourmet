@@ -11,6 +11,7 @@ Source:		http://prdownloads.sourceforge.net/grecipe-manager/%{name}-%{version}-2
 URL:		http://grecipe-manager.sourceforge.net/
 License:	GPL
 Group:		Graphical desktop/GNOME
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	python-devel 
 BuildRequires:  python-metakit ImageMagick
 BuildRequires:  desktop-file-utils pygtk2.0-devel python-sqlite2 PyRTF python-imaging
