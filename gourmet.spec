@@ -1,6 +1,6 @@
 %define name	gourmet
 %define version 0.13.4
-%define release %mkrel 4
+%define release %mkrel 5
 
 Name: 	 	%{name}
 Summary: 	Recipe manager for the GNOME desktop
