@@ -1,6 +1,6 @@
 %define name	gourmet
 %define version 0.13.8
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: 	 	%{name}
 Summary: 	Recipe manager for the GNOME desktop
@@ -13,11 +13,22 @@ License:	GPLv2+
 Group:		Graphical desktop/GNOME
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	python-devel 
-BuildRequires:  python-metakit imagemagick
-BuildRequires:  desktop-file-utils pygtk2.0-devel python-sqlite2 python-pyrtf python-imaging
-Requires:	gnome-python pygtk2.0-libglade
-Requires:	python-metakit python-imaging python-sqlite2 python-imaging
+BuildRequires:  python-metakit
+BuildRequires:	imagemagick
+BuildRequires:  desktop-file-utils
+BuildRequires:	pygtk2.0-devel
+BuildRequires:	python-sqlite2
+BuildRequires:	python-pyrtf
+BuildRequires:	python-imaging
+Requires:	gnome-python
+Requires:	pygtk2.0-libglade
+Requires:	python-metakit
+Requires:	python-imaging
+Requires:	python-sqlite2
+Requires:	python-imaging
 Requires:	python-reportlab
+Requires:	gnome-python-gnomeprint
+Requires:	python-pyrtf
 BuildArch:	noarch
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
