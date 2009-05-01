@@ -1,6 +1,6 @@
 %define name	gourmet
-%define version 0.13.8
-%define release %mkrel 2
+%define version 0.14.7
+%define release %mkrel 1
 
 Name: 	 	%{name}
 Summary: 	Recipe manager for the GNOME desktop
@@ -39,7 +39,6 @@ automatically generate shopping lists from your collection.
 
 %prep
 %setup -q
-chmod -x data/recipe.dtd
 
 %build
 %{__python} setup.py build
