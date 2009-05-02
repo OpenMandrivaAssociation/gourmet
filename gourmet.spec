@@ -20,6 +20,7 @@ BuildRequires:	pygtk2.0-devel
 BuildRequires:	python-sqlite2
 BuildRequires:	python-pyrtf
 BuildRequires:	python-imaging
+BuildRequires:	intltool
 Requires:	gnome-python
 Requires:	pygtk2.0-libglade
 Requires:	python-metakit
