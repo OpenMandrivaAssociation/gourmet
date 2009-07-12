@@ -1,6 +1,6 @@
 %define name	gourmet
 %define version 0.14.10
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: 	 	%{name}
 Summary: 	Recipe manager for the GNOME desktop
@@ -29,6 +29,7 @@ Requires:	python-sqlite2
 Requires:	python-imaging
 Requires:	python-reportlab
 Requires:	gnome-python-gnomeprint
+Requires:	gnome-python-gtkspell
 Requires:	python-pyrtf
 Requires:	python-sqlalchemy
 Requires:	python-reportlab
