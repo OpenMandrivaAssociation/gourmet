@@ -1,5 +1,5 @@
 %define name	gourmet
-%define version 0.15.0
+%define version 0.15.3
 %define release %mkrel 1
 
 Name: 	 	%{name}
