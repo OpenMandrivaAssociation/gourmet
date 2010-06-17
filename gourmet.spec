@@ -1,6 +1,6 @@
 %define name	gourmet
 %define version 0.15.4
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: 	 	%{name}
 Summary: 	Recipe manager for the GNOME desktop
@@ -56,13 +56,10 @@ rm -rf %{buildroot}
 #menu
 desktop-file-install --vendor="" \
   --remove-category="Application" \
-  --remove-category="Other" \
-  --remove-key="Icon" \
   --add-category="GTK" \
-  --add-category="Database;Office" \
-  --add-category="X-MandrivaLinux-MoreApplications-Databases" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
+sed -i -e 's/Icon=recbox.png/Icon=gourmet/g' %{buildroot}%{_datadir}/applications/*
 
 #icons
 mkdir -p %{buildroot}/%_liconsdir
