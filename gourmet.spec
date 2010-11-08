@@ -1,7 +1,7 @@
 Name: 	 	gourmet
 Summary: 	Recipe manager for the GNOME desktop
 Version: 	0.15.6
-Release: 	%mkrel 1
+Release: 	%mkrel 2
 Source:		http://prdownloads.sourceforge.net/grecipe-manager/%{name}-%{version}.tar.gz
 URL:		http://grecipe-manager.sourceforge.net/
 License:	GPLv2+
