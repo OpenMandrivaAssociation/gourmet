@@ -1,8 +1,9 @@
 Name: 	 	gourmet
 Summary: 	Recipe manager for the GNOME desktop
 Version: 	0.15.6
-Release: 	%mkrel 2
+Release: 	%mkrel 3
 Source:		http://prdownloads.sourceforge.net/grecipe-manager/%{name}-%{version}.tar.gz
+Patch0:		gourmet-0.15.6-fix_database_update_from_older_versions.patch
 URL:		http://grecipe-manager.sourceforge.net/
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -38,6 +39,7 @@ automatically generate shopping lists from your collection.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__python} setup.py build
