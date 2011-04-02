@@ -1,13 +1,11 @@
 Name: 	 	gourmet
 Summary: 	Recipe manager for the GNOME desktop
-Version: 	0.15.6
-Release: 	%mkrel 3
+Version: 	0.15.9
+Release: 	%mkrel 1
 Source:		http://prdownloads.sourceforge.net/grecipe-manager/%{name}-%{version}.tar.gz
-Patch0:		gourmet-0.15.6-fix_database_update_from_older_versions.patch
 URL:		http://grecipe-manager.sourceforge.net/
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	python-devel 
 BuildRequires:  python-metakit
 BuildRequires:	imagemagick
@@ -39,16 +37,18 @@ automatically generate shopping lists from your collection.
 
 %prep
 %setup -q
-%patch0 -p1
+
+#fix .desktop file
+sed -i -e 's/Icon=recbox.png/Icon=gourmet/g' %{name}.desktop.in
 
 %build
 %{__python} setup.py build
 
 %install
 rm -rf %{buildroot}
-%{__python} setup.py install -O1 --skip-build --root %buildroot --disable-modules-check
+%{__python} setup.py install -O1 --skip-build --root %{buildroot} --disable-modules-check
 
-%find_lang %name
+%find_lang %{name}
 
 #menu
 desktop-file-install --vendor="" \
@@ -56,38 +56,26 @@ desktop-file-install --vendor="" \
   --add-category="GTK" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
-sed -i -e 's/Icon=recbox.png/Icon=gourmet/g' %{buildroot}%{_datadir}/applications/*
-
 #icons
-mkdir -p %{buildroot}/%_liconsdir
-convert -size 48x48 images/recbox.png %{buildroot}/%_liconsdir/%name.png
-mkdir -p %{buildroot}/%_iconsdir
-convert -size 32x32 images/recbox.png %{buildroot}/%_iconsdir/%name.png
-mkdir -p %{buildroot}/%_miconsdir
-convert -size 16x16 images/recbox.png %{buildroot}/%_miconsdir/%name.png
+mkdir -p %{buildroot}%{_liconsdir}
+convert -size 48x48 images/recbox.png %{buildroot}%{_liconsdir}/%{name}.png
+mkdir -p %{buildroot}%{_iconsdir}
+convert -size 32x32 images/recbox.png %{buildroot}%{_iconsdir}/%{name}.png
+mkdir -p %{buildroot}%{_miconsdir}
+convert -size 16x16 images/recbox.png %{buildroot}%{_miconsdir}/%{name}.png
 
 %clean
 rm -rf %{buildroot}
 
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-		
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
-
-%files -f %name.lang
+%files -f %{name}.lang
 %defattr(-,root,root)
 %doc CHANGES MANIFEST PKG-INFO README TODO
-%{_bindir}/%name
-%{py_puresitedir}/%{name}*
+%{_bindir}/%{name}
+%{py_puresitedir}/%{name}
+%{py_puresitedir}/%{name}-%{version}-py%{py_ver}.egg-info
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*
-%{_datadir}/%name
-%{_liconsdir}/%name.png
-%{_iconsdir}/%name.png
-%{_miconsdir}/%name.png
-
+%{_datadir}/%{name}
+%{_liconsdir}/%{name}.png
+%{_iconsdir}/%{name}.png
+%{_miconsdir}/%{name}.png
