@@ -1,7 +1,7 @@
 Name: 	 	gourmet
 Summary: 	Recipe manager for the GNOME desktop
 Version: 	0.15.9
-Release: 	%mkrel 1
+Release: 	%mkrel 2
 Source:		http://prdownloads.sourceforge.net/grecipe-manager/%{name}-%{version}.tar.gz
 URL:		http://grecipe-manager.sourceforge.net/
 License:	GPLv2+
@@ -27,6 +27,7 @@ Requires:	gnome-python-gtkspell
 Requires:	python-pyrtf
 Requires:	python-sqlalchemy
 Requires:	python-reportlab
+Requires:	python-pypoppler
 BuildArch:	noarch
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
