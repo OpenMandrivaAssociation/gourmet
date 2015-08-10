@@ -1,27 +1,22 @@
 Name:		gourmet
 Summary:	Recipe manager for the GNOME desktop
 Version:	0.17.4
-Release:	1
+Release:	2
 Source0:	https://github.com/thinkle/gourmet/archive/%{name}-%{version}.tar.gz
 URL:		http://thinkle.github.io/gourmet/
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 BuildRequires:	python-devel
-BuildRequires:	python-metakit
 BuildRequires:	imagemagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	python-elib.intl
-BuildRequires:	python-sqlite2
 BuildRequires:	python-pyrtf
 BuildRequires:	python-imaging
 BuildRequires:	intltool
 BuildRequires:	python-distutils-extra
 Requires:	pygtk2.0-libglade
 Requires:	python-elib.intl
-Requires:	python-metakit
-Requires:	python-imaging
-Requires:	python-sqlite2
 Requires:	python-imaging
 Requires:	python-reportlab
 Requires:	python-pyrtf
