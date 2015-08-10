@@ -11,19 +11,19 @@ BuildRequires:	python-metakit
 BuildRequires:	imagemagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	pygtk2.0-devel
+BuildRequires:	python-elib.intl
 BuildRequires:	python-sqlite2
 BuildRequires:	python-pyrtf
 BuildRequires:	python-imaging
 BuildRequires:	intltool
-Requires:	gnome-python
+BuildRequires:	python-distutils-extra
 Requires:	pygtk2.0-libglade
+Requires:	python-elib.intl
 Requires:	python-metakit
 Requires:	python-imaging
 Requires:	python-sqlite2
 Requires:	python-imaging
 Requires:	python-reportlab
-Requires:	gnome-python-gnomeprint
-Requires:	gnome-python-gtkspell
 Requires:	python-pyrtf
 Requires:	python-sqlalchemy
 Requires:	python-reportlab
@@ -47,9 +47,7 @@ sed -i -e 's/Icon=recbox.png/Icon=gourmet/g' %{name}.desktop.in
 
 %install
 rm -rf %{buildroot}
-%{__python} setup.py install -O1 --skip-build --root %{buildroot} --disable-modules-check
-
-%find_lang %{name}
+%{__python} setup.py install -O1 --root %{buildroot}
 
 #menu
 desktop-file-install --vendor="" \
@@ -57,22 +55,14 @@ desktop-file-install --vendor="" \
   --add-category="GTK" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
-#icons
-mkdir -p %{buildroot}%{_liconsdir}
-convert -size 48x48 images/recbox.png %{buildroot}%{_liconsdir}/%{name}.png
-mkdir -p %{buildroot}%{_iconsdir}
-convert -size 32x32 images/recbox.png %{buildroot}%{_iconsdir}/%{name}.png
-mkdir -p %{buildroot}%{_miconsdir}
-convert -size 16x16 images/recbox.png %{buildroot}%{_miconsdir}/%{name}.png
+%find_lang %{name}
 
 %files -f %{name}.lang
-%doc CHANGES MANIFEST PKG-INFO README TODO
+%doc ChangeLog README.md
 %{_bindir}/%{name}
 %{py_puresitedir}/%{name}
 %{py_puresitedir}/%{name}-%{version}-py%{py_ver}.egg-info
 %{_datadir}/applications/*
-%{_datadir}/pixmaps/*
 %{_datadir}/%{name}
-%{_liconsdir}/%{name}.png
-%{_iconsdir}/%{name}.png
-%{_miconsdir}/%{name}.png
+%{_iconsdir}/hicolor/*/apps/gourmet.*
+%{_datadir}/appdata/gourmet.appdata.xml
