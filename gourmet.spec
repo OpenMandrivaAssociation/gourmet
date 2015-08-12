@@ -38,11 +38,11 @@ automatically generate shopping lists from your collection.
 sed -i -e 's/Icon=recbox.png/Icon=gourmet/g' %{name}.desktop.in
 
 %build
-%{__python} setup.py build
+%{__python2} setup.py build
 
 %install
 rm -rf %{buildroot}
-%{__python} setup.py install -O1 --root %{buildroot}
+%{__python2} setup.py install -O1 --root %{buildroot}
 
 #menu
 desktop-file-install --vendor="" \
@@ -55,8 +55,8 @@ desktop-file-install --vendor="" \
 %files -f %{name}.lang
 %doc ChangeLog README.md
 %{_bindir}/%{name}
-%{py_puresitedir}/%{name}
-%{py_puresitedir}/%{name}-%{version}-py%{py_ver}.egg-info
+%{py2_puresitedir}/%{name}
+%{py2_puresitedir}/%{name}-%{version}-py%{py2_ver}.egg-info
 %{_datadir}/applications/*
 %{_datadir}/%{name}
 %{_iconsdir}/hicolor/*/apps/gourmet.*
