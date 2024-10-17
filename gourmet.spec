@@ -3,7 +3,7 @@ Summary:	Recipe manager for the GNOME desktop
 Version:	0.17.4
 Release:	3
 Source0:	https://github.com/thinkle/gourmet/archive/%{name}-%{version}.tar.gz
-URL:		http://thinkle.github.io/gourmet/
+URL:		https://thinkle.github.io/gourmet/
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 BuildRequires:	python-devel
